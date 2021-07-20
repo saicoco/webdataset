@@ -18,11 +18,13 @@ pytorch大规模数据读取dataset
 
 
 ### 例子
+
+将数据写入tar，见write2tar.py中例子
+
 这里想实现一个功能：通过读取text，将word以及对应词向量存储至tar文件中；需要如下步骤：
 1. 构建解析函数
 2. 构建pipe_fn函数，主要用来整理输出格式
 
-### 例子
 ```python
 
 class TextPairDistilTarDataset(BaseTarDataset):
