@@ -18,9 +18,10 @@ pytorch大规模数据读取dataset
 
 
 ### 例子
-
+#### 生成tar文件
 将数据写入tar，见write2tar.py中例子
 
+#### 继承并时间解析逻辑
 这里想实现一个功能：通过读取text，将word以及对应词向量存储至tar文件中；需要如下步骤：
 1. 构建解析函数
 2. 构建pipe_fn函数，主要用来整理输出格式
@@ -78,3 +79,10 @@ class TextPairDistilTarDataset(BaseTarDataset):
             yield {'text': text, 'embedding': embedding}
 
 ```
+#### 在dataloader中使用
+```
+dataset_class = tar_class_dataset_init()
+dataloader = torch.utils.data.DataLoader(dataset_class.dataset, batch_size=xx, num_worker=xx)
+```
+
+**TIPS: webdataset属于IterableDataset, 因此需要指定数据length，否则会报错**
